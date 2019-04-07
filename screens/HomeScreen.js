@@ -25,8 +25,8 @@ export default class HomeScreen extends React.Component {
             <Image
               source={
                 __DEV__
-                  ? require('../assets/images/robot-dev.png')
-                  : require('../assets/images/robot-prod.png')
+                  ? require('../assets/images/icon.png')
+                  : require('../assets/images/icon.png')
               }
               style={styles.welcomeImage}
             />
@@ -101,7 +101,13 @@ export default class HomeScreen extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: '#fae3d9',
+    alignItems: 'center',
+  },
+  image: {
+    bottom: 250,
+    width: 200,
+    resizeMode: 'contain',
   },
   developmentModeText: {
     marginBottom: 20,
@@ -119,8 +125,8 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
   welcomeImage: {
-    width: 100,
-    height: 80,
+    width: 300,
+    height: 300,
     resizeMode: 'contain',
     marginTop: 3,
     marginLeft: -10,
