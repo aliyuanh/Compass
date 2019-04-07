@@ -12,15 +12,31 @@ import { WebBrowser } from 'expo';
 
 import { MonoText } from '../components/StyledText';
 
+import { SearchBar } from 'react-native-elements';
+
+import { createStackNavigator } from 'react-navigation';
+import SearchScreen from './SearchScreen';
+
 export default class HomeScreen extends React.Component {
   static navigationOptions = {
     header: null,
   };
 
+  state = {
+    search: '',
+  };
+
+  updateSearch = search => {
+    this.setState({ search });
+  };
+
   render() {
+    const { search } = this.state;
+
     return (
       <View style={styles.container}>
         <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
+
           <View style={styles.welcomeContainer}>
             <Image
               source={
@@ -41,18 +57,41 @@ export default class HomeScreen extends React.Component {
               <MonoText style={styles.codeHighlightText}>screens/HomeScreen.js</MonoText>
             </View>
 
+
             <Text style={styles.getStartedText}>
-              Change this text and your app will automatically reload.
+              Change this text and your app will automatically reload riprip.
             </Text>
           </View>
 
+          <View style={styles.searchContainer}>
+          <SearchBar
+              containerStyle={{
+                backgroundColor: 'white', 
+                borderColor: '#ade6e6',
+                borderWidth: 1,
+                borderRadius: 30,
+                width: '90%',
+              }}
+              inputContainerStyle={{
+                backgroundColor: 'white',
+              }}
+              onChangeText={this.updateSearch}
+              value={search}
+              lightTheme={true}
+            />
+          </View>
+
+          {/*
           <View style={styles.helpContainer}>
             <TouchableOpacity onPress={this._handleHelpPress} style={styles.helpLink}>
               <Text style={styles.helpLinkText}>Help, it didn’t automatically reload!</Text>
             </TouchableOpacity>
           </View>
+          */}
+
         </ScrollView>
 
+        {/*
         <View style={styles.tabBarInfoContainer}>
           <Text style={styles.tabBarInfoText}>This is a tab bar. You can edit it in:</Text>
 
@@ -60,6 +99,8 @@ export default class HomeScreen extends React.Component {
             <MonoText style={styles.codeHighlightText}>navigation/MainTabNavigator.js</MonoText>
           </View>
         </View>
+      */}
+
       </View>
     );
   }
@@ -102,6 +143,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
+    borderColor: 'blue', borderWidth: 1
   },
   developmentModeText: {
     marginBottom: 20,
@@ -117,6 +159,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginTop: 10,
     marginBottom: 20,
+    borderColor: 'red', borderWidth: 1
   },
   welcomeImage: {
     width: 100,
@@ -128,6 +171,7 @@ const styles = StyleSheet.create({
   getStartedContainer: {
     alignItems: 'center',
     marginHorizontal: 50,
+    borderColor: 'orange', borderWidth: 1
   },
   homeScreenFilename: {
     marginVertical: 7,
@@ -139,6 +183,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'rgba(0,0,0,0.05)',
     borderRadius: 3,
     paddingHorizontal: 4,
+    borderColor: 'yellow', borderWidth: 1
   },
   getStartedText: {
     fontSize: 17,
@@ -165,6 +210,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: '#fbfbfb',
     paddingVertical: 20,
+    borderColor: 'black', borderWidth: 1
   },
   tabBarInfoText: {
     fontSize: 17,
@@ -177,12 +223,21 @@ const styles = StyleSheet.create({
   helpContainer: {
     marginTop: 15,
     alignItems: 'center',
+    borderColor: 'purple', borderWidth: 1
   },
   helpLink: {
     paddingVertical: 15,
   },
   helpLinkText: {
-    fontSize: 14,
+    fontSize: 14, 
     color: '#2e78b7',
+  },
+  searchContainer: {
+    alignItems: 'center',
+    marginTop: 5,
+    marginBottom: 15,
+    paddingBottom: 5,
+    paddingTop: 5,
+    backgroundColor: 'white',
   },
 });
