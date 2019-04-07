@@ -21,7 +21,6 @@ function addEvents(loc, arr){
 }
 function pressBoi(item, arr, nav){
   arr.push(item)
-//  const MyNavScreen = ({ navigation })
   Alert.alert(
   'YUHItinerary Modified',
   'YEAdded to itinerary for '+item.location,
@@ -30,14 +29,12 @@ function pressBoi(item, arr, nav){
   ],
   { cancelable: false }
 )
-//move this to another button which sends to my itineraries
 {nav.navigate('Settings', {itinerary: arr})}
 }
 
 export default class HomeScreen extends React.Component {
   constructor(){
     super();
-    //navigation = this.props.navigation
     this.location = 'New York City'
     this.toAddToItinerary = []
     this.eventAndPic = [
@@ -78,7 +75,6 @@ export default class HomeScreen extends React.Component {
             <Image
                 source={
                   __DEV__
-                  //set this to the app logo later
                     ? require('../assets/images/icon.png')
                     : require('../assets/images/icon.png')
                 }
@@ -87,7 +83,6 @@ export default class HomeScreen extends React.Component {
           </View>
 
           <View style={styles.getStartedContainer}>
-            {this._maybeRenderDevelopmentModeWarning()}
 
             <Text style={styles.getStartedText}>Get started by opening</Text>
 
@@ -108,7 +103,6 @@ export default class HomeScreen extends React.Component {
               <ScrollView style = {{margin:20}}>
               <View/>
               {
-              //  addEvents('hihi', this.eventAndPic)
               }
                 {
                   this.eventAndPic.map((item, key)=>
@@ -124,7 +118,7 @@ export default class HomeScreen extends React.Component {
                         title = 'Add'
                         color="#841584"
                         style = {styles.smallBox}
-                      //  <Image source = {item.imageLoc}/>
+                        //  <Image source = {item.imageLoc}/>
                       />
                     </View>
 
@@ -137,38 +131,6 @@ export default class HomeScreen extends React.Component {
       </View>
     );
   }
-
-  _maybeRenderDevelopmentModeWarning() {
-    if (__DEV__) {
-      const learnMoreButton = (
-        <Text onPress={this._handleLearnMorePress} style={styles.helpLinkText}>
-          Learn more
-        </Text>
-      );
-
-      return (
-        <Text style={styles.developmentModeText}>
-         {}
-        </Text>
-      );
-    } else {
-      return (
-        <Text style={styles.developmentModeText}>
-          You are not in development mode, your app will run at full speed.
-        </Text>
-      );
-    }
-  }
-
-  _handleLearnMorePress = () => {
-    WebBrowser.openBrowserAsync('https://docs.expo.io/versions/latest/guides/development-mode');
-  };
-
-  _handleHelpPress = () => {
-    WebBrowser.openBrowserAsync(
-      'https://docs.expo.io/versions/latest/guides/up-and-running.html#can-t-see-your-changes'
-    );
-  };
 }
 
 const styles = StyleSheet.create({
@@ -301,5 +263,5 @@ const styles = StyleSheet.create({
     paddingBottom: 5,
     paddingTop: 5,
     backgroundColor: 'white',
-  },
+  }
 });
