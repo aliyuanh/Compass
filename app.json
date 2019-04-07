@@ -11,6 +11,7 @@
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
+	"facebookScheme":"fb414920962651232",
     "splash": {
       "image": "./assets/images/splash.png",
       "resizeMode": "contain",

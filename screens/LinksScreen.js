@@ -1,27 +1,43 @@
 import React from 'react';
-import { ScrollView, StyleSheet } from 'react-native';
-import { ExpoLinksView } from '@expo/samples';
+import { Button, StyleSheet, Text, View } from 'react-native';
+import { AuthSession } from 'expo';
+import * as firebase from 'firebase';
+import MainTabNavigator from '../navigation/MainTabNavigator';
+import { StackNavigator } from 'react-navigation';
+const FB_APP_ID = '414920962651232';
 
-export default class LinksScreen extends React.Component {
-  static navigationOptions = {
-    title: 'Links',
+export default class App extends React.Component {
+  state = {
+    result: null,
   };
 
   render() {
     return (
-      <ScrollView style={styles.container}>
-        {/* Go ahead and delete ExpoLinksView and replace it with your
-           * content, we just wanted to provide you with some helpful links */}
-        <ExpoLinksView />
-      </ScrollView>
+      <View style={styles.container}>
+        <Button title="Log in with your facebook account" onPress={this._handlePressAsync} />
+        {this.state.result ? (
+          <Text>{JSON.stringify(this.state.result)}</Text>
+        ) : null}
+        </View>
     );
   }
+
+  _handlePressAsync = async () => {
+    let redirectUrl = AuthSession.getRedirectUrl();
+    let result = await AuthSession.startAsync({
+      authUrl:
+        `https://www.facebook.com/v2.8/dialog/oauth?response_type=token` +
+        `&client_id=${FB_APP_ID}` +
+        `&redirect_uri=${encodeURIComponent(redirectUrl)}`,
+    });
+    this.setState({ result });
+  };
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingTop: 15,
-    backgroundColor: '#fff',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
 });
