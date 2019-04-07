@@ -35,24 +35,31 @@ function pressBoi(item, arr, nav){
 }
 
 export default class HomeScreen extends React.Component {
-  constructor(){
-    super();
+  constructor(props){
+    super(props);
     //navigation = this.props.navigation
-    this.location = 'New York City'
+    this.location = 'Los Angeles'
     this.toAddToItinerary = []
     this.eventAndPic = [
-      {event: 'Disneyland', imageLoc: require('../assets/images/disneyland.jpg'), location: 'Los Angeles'},
+      {event: 'Disneyland        ', imageLoc: require('../assets/images/disneyland.jpg'), location: 'Los Angeles'},
       {event: 'Universal Studios Hollywood', imageLoc: require('../assets/images/universal.jpeg'), location: 'Los Angeles'},
       {event: 'Griffith Observatory', imageLoc: require('../assets/images/griffith.jpg'), location: 'Los Angeles'},
       {event: 'Santa Monica Pier', imageLoc: require('../assets/images/santa.jpg'), location: 'Los Angeles'},
-      {event: 'The Getty', imageLoc: require('../assets/images/getty.jpeg'), location: 'Los Angeles'},
+      {event: 'The Getty         ', imageLoc: require('../assets/images/getty.jpeg'), location: 'Los Angeles'},
       {event: 'Hollywood Walk of Fame', imageLoc: require('../assets/images/hollywood.jpg'), location: 'Los Angeles'},
-      {event: 'Broadway', imageLoc: require('../assets/images/broadway.jpeg'), location: 'New York City'},
+      {event: 'Broadway           ', imageLoc: require('../assets/images/broadway.jpeg'), location: 'New York City'},
       {event: 'Empire State Building', imageLoc: require('../assets/images/empire.jpg'), location: 'New York City'},
       {event: 'Statue of Liberty', imageLoc: require('../assets/images/liberty.jpg'), location: 'New York City'},
       {event: 'Central Park', imageLoc: require('../assets/images/central.jpg'), location: 'New York City'},
       {event: 'Rockefeller Center', imageLoc: require('../assets/images/rockefeller.jpg'), location: 'New York City'},
       {event: 'Museum of Modern Art', imageLoc: require('../assets/images/moma.jpg'), location: 'New York City'},
+      {event: 'MORI Digital Art Museum', imageLoc: require('../assets/images/mori.jpg'), location: 'Tokyo'},
+      {event: 'Tsukiji Fish Market', imageLoc: require('../assets/images/tsukiji.jpg'), location: 'Tokyo'},
+      {event: 'Muji GINZA Flagship Store', imageLoc: require('../assets/images/muji.png'), location: 'Tokyo'},
+      {event: 'Tokyu Hands Ginza', imageLoc: require('../assets/images/ginza.jpg'), location: 'Tokyo'},
+      {event: 'Urikiriya         ', imageLoc: require('../assets/images/uri.jpg'), location: 'Tokyo'},
+      {event: 'Studio Ghibli Museum', imageLoc: require('../assets/images/ghibli.jpg'), location: 'Tokyo'},
+
     ]
   }
 
@@ -97,7 +104,7 @@ export default class HomeScreen extends React.Component {
 
           <Text style = {styles.developmentModeText}>{this.location}</Text>
           <View style= {{flex:5}}>
-            <ScrollView style = {{margin:20}}>
+            <ScrollView style = {{margin:10}}>
           <View/>
 
            {
@@ -115,7 +122,7 @@ export default class HomeScreen extends React.Component {
                   onPress = {()=>pressBoi(item, this.toAddToItinerary, this.props.navigation)
                   }
                   title = 'Add'
-                  color="#841584"
+                  color = '#92d7e5'
                   style = {styles.smallBox}
                   //  <Image source = {item.imageLoc}/>
                 />
@@ -134,28 +141,54 @@ export default class HomeScreen extends React.Component {
 }
 
 const styles = StyleSheet.create({
+  locationContainer:{
+    flex: 7,
+    maxHeight: 200,
+    flexDirection: 'row',
+    margin: 10,
+    flexWrap : 'wrap',
+    backgroundColor: '#f7ebe6',
+    borderRadius:5,
+    justifyContent:'space-between'
+  },
+  locationText:{
+    margin: 5,
+    textAlign: 'left',
+    fontSize: 20,
+    maxWidth: 170,
+    justifyContent:'space-between'
+  },
+  locationImage:{
+    margin:5,
+    maxWidth: 50,
+    maxHeight:50
+  },
+  smallBox:{
+    marginRight: 5,
+    textAlign: 'right',
+    padding: 3
+  },
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: '#fae3d9',
   },
   developmentModeText: {
-    marginBottom: 20,
-    color: 'rgba(0,0,0,0.4)',
-    fontSize: 14,
-    lineHeight: 19,
+    marginBottom:10,
+    color: 'rgba(0,0,0,1)',
+    fontSize: 24,
+    lineHeight: 24,
     textAlign: 'center',
+    fontWeight: "bold",
   },
   contentContainer: {
     paddingTop: 30,
   },
   welcomeContainer: {
     alignItems: 'center',
-    marginTop: 10,
-    marginBottom: 20,
   },
   welcomeImage: {
     width: 100,
-    height: 80,
+    height: 100,
     resizeMode: 'contain',
     marginTop: 3,
     marginLeft: -10,
@@ -218,7 +251,7 @@ const styles = StyleSheet.create({
     paddingVertical: 15,
   },
   helpLinkText: {
-    fontSize: 14, 
+    fontSize: 14,
     color: '#2e78b7',
   },
   searchContainer: {
