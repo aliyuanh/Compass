@@ -7,7 +7,7 @@ export default class SettingsScreen extends React.Component {
     title: '',
   };
 
-  render() { 
+  render() {
     return (
       <ScrollView contentContainerStyle={styles.wrapper}>
         <ScrollView contentContainerStyle={styles.wrapper}>
@@ -79,7 +79,7 @@ export default class SettingsScreen extends React.Component {
           <Text style={styles.smolText}>Tokyu Hands delay with all kinds of products, such as high-quality and high-functional living ware, fancy made-in-Japan bags, convenient travel goods, the latest Japanese stationery, unique articles, topical beauty products, and tools and materials for DIY.
 </Text>
         </ScrollView>
-        <Text></Text> 
+        <Text></Text>
         <ScrollView style={styles.textContainer}>
           <Text style={styles.bigText}>Dinner</Text>
         </ScrollView>
@@ -153,7 +153,7 @@ export default class SettingsScreen extends React.Component {
           <Text style={styles.smolText}>Open the door and welcome to wonderland! Every window and lamp is lovingly hand-crafted with beautiful and colorful stained glass using Ghibli characters, pretty plants and flowers, and forest animals. When the sun is shining, the vivid colors of the glass are reflected in splashes of colored light on the stone floors.
 </Text>
         </ScrollView>
-        <Text></Text> 
+        <Text></Text>
         <ScrollView style={styles.textContainer}>
           <Text style={styles.bigText}>Dinner</Text>
         </ScrollView>
@@ -171,8 +171,8 @@ export default class SettingsScreen extends React.Component {
 
 const styles = StyleSheet.create({
   wrapper: {
-    alignItems: 'center',
     justifyContent: 'center',
+    alignItems: 'center',
     margin: 30
   },
   container: {
@@ -183,12 +183,12 @@ const styles = StyleSheet.create({
     backgroundColor: '#fae3d9',
     flexWrap: "wrap"
   },
-  localContainer: {
+  locationContainer: {
     alignItems: 'center',
   },
   textContainer: {
     flexWrap: "wrap",
-    width: 325,
+    width: 300,
     flexDirection: 'row',
     paddingTop: 5,
     paddingBottom: 5,
@@ -206,7 +206,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
   smolText: {
-    width: 305,
+    width: 275,
     flexDirection: 'row',
     flexWrap: "wrap",
     color: '#fff',
@@ -225,7 +225,6 @@ const styles = StyleSheet.create({
     fontSize: 70,
     paddingBottom: 5,
     fontWeight: "bold",
-
     shadowOpacity: 1,
     shadowColor: '#ffb6b9',
     textShadowOffset: {width: 0, height: 5},

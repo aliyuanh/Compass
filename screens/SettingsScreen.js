@@ -10,7 +10,6 @@ export default class SettingsScreen extends React.Component {
     title: 'My Itinerary',
   };
 
-  
   render() {
     return (
       <View style={styles.container}>
@@ -51,14 +50,12 @@ export default class SettingsScreen extends React.Component {
 
 const styles = StyleSheet.create({
   container: {
-    alignItems: 'center',
     flex: 1,
     paddingTop: 25,
     backgroundColor: '#fae3d9',
   },
   buttonstyle: {
-    alignItems: 'center',
-    justifyContent:'center',
+    //justifyContent:'center',
     paddingTop: 8,
     color: 'white',
     fontSize: 40,
@@ -66,8 +63,7 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
   },
   textContainer: {
-    alignItems: 'center',
-    justifyContent:'center',
+    //justifyContent:'center',
     width: 325,
     flexDirection: 'row',
     paddingTop: 5,
@@ -89,11 +85,10 @@ const styles = StyleSheet.create({
   MainContainer: {
     flex: 1,
     margin: 10
-    
   },
-  
+
   TextStyle:{
     fontSize : 25,
-     textAlign: 'center'
+    // textAlign: 'center'
   }
 });

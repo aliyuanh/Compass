@@ -4,21 +4,57 @@ import {
   Platform,
   ScrollView,
   StyleSheet,
+  Button,
   Text,
   TouchableOpacity,
   View,
-  Button
+  Alert,
 } from 'react-native';
 import { WebBrowser } from 'expo';
-
 import { MonoText } from '../components/StyledText';
-
 import { SearchBar } from 'react-native-elements';
-
 import { createStackNavigator } from 'react-navigation';
 import SearchScreen from './SearchScreen';
 
+function addEvents(loc, arr){
+  return arr.filter(event=> event.location == 'Los Angeles')
+}
+function pressBoi(item, arr, nav){
+  arr.push(item)
+//  const MyNavScreen = ({ navigation })
+  Alert.alert(
+  'YUHItinerary Modified',
+  'YEAdded to itinerary for '+item.location,
+  [
+    {text: 'Woo!', onPress: () => console.log("button pressed in search")}
+  ],
+  { cancelable: false }
+)
+//move this to another button which sends to my itineraries
+{nav.navigate('Settings', {itinerary: arr})}
+}
+
 export default class HomeScreen extends React.Component {
+  constructor(){
+    super();
+    //navigation = this.props.navigation
+    this.location = 'New York City'
+    this.toAddToItinerary = []
+    this.eventAndPic = [
+      {event: 'Disneyland', imageLoc: require('../assets/images/disneyland.jpg'), location: 'Los Angeles'},
+      {event: 'Universal Studios Hollywood', imageLoc: require('../assets/images/universal.jpeg'), location: 'Los Angeles'},
+      {event: 'Griffith Observatory', imageLoc: require('../assets/images/griffith.jpg'), location: 'Los Angeles'},
+      {event: 'Santa Monica Pier', imageLoc: require('../assets/images/santa.jpg'), location: 'Los Angeles'},
+      {event: 'The Getty', imageLoc: require('../assets/images/getty.jpeg'), location: 'Los Angeles'},
+      {event: 'Hollywood Walk of Fame', imageLoc: require('../assets/images/hollywood.jpg'), location: 'Los Angeles'},
+      {event: 'Broadway', imageLoc: require('../assets/images/broadway.jpeg'), location: 'New York City'},
+      {event: 'Empire State Building', imageLoc: require('../assets/images/empire.jpg'), location: 'New York City'},
+      {event: 'Statue of Liberty', imageLoc: require('../assets/images/liberty.jpg'), location: 'New York City'},
+      {event: 'Central Park', imageLoc: require('../assets/images/central.jpg'), location: 'New York City'},
+      {event: 'Rockefeller Center', imageLoc: require('../assets/images/rockefeller.jpg'), location: 'New York City'},
+      {event: 'Museum of Modern Art', imageLoc: require('../assets/images/moma.jpg'), location: 'New York City'},
+    ]
+  }
   static navigationOptions = {
     header: null,
   };
@@ -40,11 +76,12 @@ export default class HomeScreen extends React.Component {
 
           <View style={styles.welcomeContainer}>
             <Image
-              source={
-                __DEV__
-                  ? require('../assets/images/robot-dev.png')
-                  : require('../assets/images/robot-prod.png')
-              }
+                source={
+                  __DEV__
+                  //set this to the app logo later
+                    ? require('../assets/images/icon.png')
+                    : require('../assets/images/icon.png')
+                }
               style={styles.welcomeImage}
             />
           </View>
@@ -57,58 +94,46 @@ export default class HomeScreen extends React.Component {
             <View style={[styles.codeHighlightContainer, styles.homeScreenFilename]}>
               <MonoText style={styles.codeHighlightText}>screens/HomeScreen.js</MonoText>
             </View>
+          <Text>   </Text>
+          <Text>   </Text>
+          <Text>   </Text>
 
+        <View style={{
+              flex: 1,
+              flexDirection: 'column',
+              justifyContent: 'space-evenly'
+            }}>
+            <Text style = {styles.developmentModeText}>{this.location}</Text>
+            <View style= {{flex:5}}>
+              <ScrollView style = {{margin:20}}>
+              <View/>
+              {
+              //  addEvents('hihi', this.eventAndPic)
+              }
+                {
+                  this.eventAndPic.map((item, key)=>
+                (
+                  item.location === this.location?
+                  <View key = {key} style={styles.locationContainer}>
+                    <Image source = {item.imageLoc} style = {styles.locationImage} resizeMode = "contain"/>
+                    <Text style = {styles.locationText}> {item.event} </Text>
+                    <View style = {styles.smallBox}>
+                      <Button
+                        onPress = {()=>pressBoi(item, this.toAddToItinerary, this.props.navigation)
+                        }
+                        title = 'Add'
+                        color="#841584"
+                        style = {styles.smallBox}
+                      //  <Image source = {item.imageLoc}/>
+                      />
+                    </View>
 
-            <Text style={styles.getStartedText}>
-              Change this text and your app will automatically reload riprip.
-            </Text>
-          </View>
-
-          <View style={styles.searchContainer}>
-          <SearchBar
-              containerStyle={{
-                backgroundColor: 'white', 
-                borderColor: '#ade6e6',
-                borderWidth: 1,
-                borderRadius: 30,
-                width: '90%',
-              }}
-              inputContainerStyle={{
-                backgroundColor: 'white',
-              }}
-              onChangeText={this.updateSearch}
-              value={search}
-              lightTheme={true}
-            />
-          </View>
-
-        <Button 
-          title="Results" 
-          onPress={
-            () => this.props.navigation.navigate( 'Links' )
-          }
-        />
-
-          {/*
-          <View style={styles.helpContainer}>
-            <TouchableOpacity onPress={this._handleHelpPress} style={styles.helpLink}>
-              <Text style={styles.helpLinkText}>Help, it didn’t automatically reload!</Text>
-            </TouchableOpacity>
-          </View>
-          */}
-
-        </ScrollView>
-
-        {/*
-        <View style={styles.tabBarInfoContainer}>
-          <Text style={styles.tabBarInfoText}>This is a tab bar. You can edit it in:</Text>
-
-          <View style={[styles.codeHighlightContainer, styles.navigationFilename]}>
-            <MonoText style={styles.codeHighlightText}>navigation/MainTabNavigator.js</MonoText>
-          </View>
+                  </View>:null
+                ))
+                }
+              </ScrollView>
+            </View>
         </View>
-      */}
-
       </View>
     );
   }
@@ -123,8 +148,7 @@ export default class HomeScreen extends React.Component {
 
       return (
         <Text style={styles.developmentModeText}>
-          Development mode is enabled, your app will be slower but you can use useful development
-          tools. {learnMoreButton}
+         {}
         </Text>
       );
     } else {
@@ -148,36 +172,67 @@ export default class HomeScreen extends React.Component {
 }
 
 const styles = StyleSheet.create({
+  smallBox:{
+    minWidth: 60,
+    minHeight: 40,
+    maxHeight:40,
+    maxWidth:60,
+    margin: 20,
+  },
+  locationImage:{
+    margin: 10,
+    height: 60,
+    width: 60
+  },
+  locationText:{
+    margin:10,
+    fontSize: 20,
+    flex: 2,
+    flexWrap: 'wrap'
+  },
+  locationContainer:{
+    flexDirection : 'row',
+    borderRadius: 5,
+    borderWidth: 3,
+    borderColor: 'rgba(100,100,100,.5)',
+    marginBottom:20,
+    marginHorizontal: 5,
+    fontSize: 20,
+    //maxHeight: 100,
+    backgroundColor: 'rgba(200,200,200,.5)'
+  },
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    borderColor: 'blue', borderWidth: 1
+    backgroundColor: '#fae3d9',
   },
   developmentModeText: {
-    marginBottom: 20,
+    margin: 20,
+    paddingTop:35,
+    fontWeight:'bold',
     color: 'rgba(0,0,0,0.4)',
-    fontSize: 14,
+    fontSize: 50,
     lineHeight: 19,
     textAlign: 'center',
   },
   contentContainer: {
-    paddingTop: 30,
+    paddingTop: 20,
+    alignItems:'center'
   },
   welcomeContainer: {
     alignItems: 'center',
-    marginTop: 10,
-    marginBottom: 20,
-    borderColor: 'red', borderWidth: 1
+    marginTop: 40,
+    marginBottom: 5,
+    height: 50
   },
   welcomeImage: {
     width: 100,
-    height: 80,
+    height: 100,
     resizeMode: 'contain',
     marginTop: 3,
     marginLeft: -10,
   },
   getStartedContainer: {
-    alignItems: 'center',
+    //alignItems: 'center',
     marginHorizontal: 50,
     borderColor: 'orange', borderWidth: 1
   },
@@ -194,7 +249,7 @@ const styles = StyleSheet.create({
     borderColor: 'yellow', borderWidth: 1
   },
   getStartedText: {
-    fontSize: 17,
+    fontSize: 20,
     color: 'rgba(96,100,109, 1)',
     lineHeight: 24,
     textAlign: 'center',
@@ -215,13 +270,13 @@ const styles = StyleSheet.create({
         elevation: 20,
       },
     }),
-    alignItems: 'center',
+  //  alignItems: 'center',
     backgroundColor: '#fbfbfb',
     paddingVertical: 20,
     borderColor: 'black', borderWidth: 1
   },
   tabBarInfoText: {
-    fontSize: 17,
+    fontSize: 37,
     color: 'rgba(96,100,109, 1)',
     textAlign: 'center',
   },
@@ -231,13 +286,12 @@ const styles = StyleSheet.create({
   helpContainer: {
     marginTop: 15,
     alignItems: 'center',
-    borderColor: 'purple', borderWidth: 1
   },
   helpLink: {
     paddingVertical: 15,
   },
   helpLinkText: {
-    fontSize: 14, 
+    fontSize: 34,
     color: '#2e78b7',
   },
   searchContainer: {
