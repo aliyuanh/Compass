@@ -1,0 +1,4 @@
+npm install --save react-native-elements
+npm install --save react-native-navigation
+npm install --save react-native-firebase
+npm install --save firebase

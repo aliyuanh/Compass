@@ -40,6 +40,8 @@ export default class App extends React.Component {
         // to remove this if you are not using it in your app
         'space-mono': require('./assets/fonts/SpaceMono-Regular.ttf'),
         'amatic-bold': require('./assets/fonts/Amatic-Bold.ttf'),
+        'sofia-pro': require('./assets/fonts/sofia-pro.ttf'),
+        'avenir-light': require('./assets/fonts/Avenir-Light.ttf')
       }),
     ]);
   };

@@ -1,14 +1,16 @@
 import React from 'react';
-import { StyleSheet, Text, View, Button } from 'react-native';
+import { StyleSheet, Text, View, Button, ImageBackground } from 'react-native';
 import { Constants } from 'expo';
-import { SearchBar } from 'react-native-elements';
+import { SearchBar, Icon } from 'react-native-elements'; 
 import { FluidNavigator, Transition } from 'react-navigation-fluid-transitions';
 
 export default class SearchScreen extends React.Component {
   static navigationOptions = {
     header: null
   }
-  
+
+  random_images_array = ["../assets/images/denmark.jpg", "../assets/images/beach.jpg", "../assets/images/kyoto.jpg", "../assets/images/russia.jpg", "../assets/images/shanghai.jpg", "../assets/images/tori.jpg"];
+
   state = {
     search: '',
   };
@@ -29,14 +31,20 @@ export default class SearchScreen extends React.Component {
   render() {
     const { search } = this.state;
 
-    return (
-      <View style={styles.container}>
-        <Text> Hello, Search </Text>
+    return ( 
+
+      <ImageBackground 
+        source={require('../assets/images/Flower.jpg')} 
+        style={{width: '100%', height: '100%'}}>
+
+        <View style={styles.container}>
+
+        <Text style={[styles.titleText,styles.setColorWhite]}> Where do you want to go </Text>
 
         <View style={styles.searchContainer}>
           <SearchBar
               containerStyle={{
-                backgroundColor: 'white', 
+                backgroundColor: 'rgba(255,255,255,.2)', 
                 borderColor: '#ade6e6',
                 borderTopColor: '#ade6e6',
                 borderBottomColor: '#ade6e6',
@@ -45,12 +53,14 @@ export default class SearchScreen extends React.Component {
                 width: '90%',
               }}
               inputContainerStyle={{
-                backgroundColor: 'white',
+                backgroundColor: 'transparent',
+
               }}
               onChangeText={this.updateSearch}
               value={search}
               lightTheme={true}
               onEndEditing={this.onEnd}
+              icon = {{ color: 'white', style: styles.searchIcon }}
             />
         </View>
 
@@ -63,6 +73,8 @@ export default class SearchScreen extends React.Component {
         />*/}
 
       </View>
+      </ImageBackground>
+      
     );
   };
 }
@@ -70,7 +82,7 @@ export default class SearchScreen extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: 'rgba(0,0,0,.5)',
     alignItems: 'center',
     justifyContent: 'center'
   },
@@ -80,7 +92,23 @@ const styles = StyleSheet.create({
     marginBottom: 15,
     paddingBottom: 5,
     paddingTop: 5,
-    backgroundColor: 'white',
+    backgroundColor: 'transparent',
     width: '90%'
+  },
+  searchResPgContainer: {
+    alignItems: 'center',
+    marginTop: 10,
+    marginBottom: 15,
+    paddingBottom: 5,
+    paddingTop: 5,
+    backgroundColor: 'transparent',
+    width: '90%'
+  },
+  titleText: {
+    fontSize: 20,
+    fontFamily: 'avenir-light'
+  },
+  setColorWhite: {
+    color: 'white'
   },
 });

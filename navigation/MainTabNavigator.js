@@ -28,6 +28,7 @@ const HomeStack = createStackNavigator(
   {
     Search: { screen: SearchScreen },
     Home: { screen: HomeScreen },
+    Links: { screen: SettingsScreen },
   },
   {
     transitionConfig: () => ({
@@ -37,6 +38,12 @@ const HomeStack = createStackNavigator(
     })
   },
 );
+
+{/*
+const HomeStack = FluidNavigator({
+  Search: { screen: SearchScreen },
+  Home: { screen: HomeScreen }
+});*/}
 
 HomeStack.navigationOptions = {
   tabBarLabel: 'Search',
@@ -54,7 +61,7 @@ HomeStack.navigationOptions = {
 };
 
 const LinksStack = createStackNavigator({
-  Links: LinksScreen,
+  Links: LinksScreen
 });
 
 LinksStack.navigationOptions = {
@@ -69,6 +76,7 @@ LinksStack.navigationOptions = {
 
 const SettingsStack = createStackNavigator({
   Settings: SettingsScreen,
+
 });
 
 SettingsStack.navigationOptions = {
@@ -81,8 +89,26 @@ SettingsStack.navigationOptions = {
   ),
 };
 
-export default createBottomTabNavigator({
-  HomeStack,
-  LinksStack,
-  SettingsStack,
+export default createBottomTabNavigator(
+  {
+    HomeStack,
+    LinksStack,
+    SettingsStack
+
+  /*
+  {
+  tabBarOptions: {
+  showIcon: true,
+  showLabel: true,
+  lazyLoad: true,
+  style: {
+    backgroundColor: 'rgba(0,0,0,.2)',
+    marginTop: 20,
+    borderTopWidth: 0,
+    position: 'absolute',
+    left: 50,
+    right: 50,
+    bottom: 20,
+    height: 100
+  }}*/
 });

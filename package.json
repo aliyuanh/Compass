@@ -13,9 +13,11 @@
   "dependencies": {
     "@expo/samples": "2.1.1",
     "expo": "^32.0.0",
+    "firebase": "^5.9.3",
     "react": "16.5.0",
     "react-native": "https://github.com/expo/react-native/archive/sdk-32.0.0.tar.gz",
     "react-native-elements": "^1.1.0",
+    "react-native-firebase": "^5.2.3",
     "react-navigation": "^3.6.1",
     "react-navigation-fluid-transitions": "^0.3.1"
   },

@@ -7,6 +7,7 @@ import {
   Text,
   TouchableOpacity,
   View,
+  Button
 } from 'react-native';
 import { WebBrowser } from 'expo';
 
@@ -80,6 +81,13 @@ export default class HomeScreen extends React.Component {
               lightTheme={true}
             />
           </View>
+
+        <Button 
+          title="Results" 
+          onPress={
+            () => this.props.navigation.navigate( 'Links' )
+          }
+        />
 
           {/*
           <View style={styles.helpContainer}>
