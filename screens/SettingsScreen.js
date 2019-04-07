@@ -55,15 +55,16 @@ const styles = StyleSheet.create({
     backgroundColor: '#fae3d9',
   },
   buttonstyle: {
-    //justifyContent:'center',
+    justifyContent:'center',
     paddingTop: 8,
     color: 'white',
     fontSize: 40,
     height: 70,
     fontWeight: "bold",
+    alignItems: 'center'
   },
   textContainer: {
-    //justifyContent:'center',
+    justifyContent:'center',
     width: 325,
     flexDirection: 'row',
     paddingTop: 5,
@@ -89,6 +90,6 @@ const styles = StyleSheet.create({
 
   TextStyle:{
     fontSize : 25,
-    // textAlign: 'center'
+    textAlign: 'center'
   }
 });

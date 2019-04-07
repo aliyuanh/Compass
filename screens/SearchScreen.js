@@ -2,7 +2,6 @@ import React from 'react';
 import { StyleSheet, Text, View, Button, ImageBackground } from 'react-native';
 import { Constants } from 'expo';
 import { SearchBar, Icon } from 'react-native-elements'; 
-import { FluidNavigator, Transition } from 'react-navigation-fluid-transitions';
 
 export default class SearchScreen extends React.Component {
   static navigationOptions = {
