@@ -33,7 +33,7 @@ export default class SearchScreen extends React.Component {
     return (
 
       <ImageBackground
-        source={require('../assets/images/Flower.jpg')}
+        source={require('../assets/images/pinkbeach.jpg')}
         style={{width: '100%', height: '100%'}}>
 
         <View style={styles.container}>
@@ -53,13 +53,21 @@ export default class SearchScreen extends React.Component {
               }}
               inputContainerStyle={{
                 backgroundColor: 'transparent',
-
+              }}
+              inputStyle={{
+                color: '#5b5b5b',
+                fontFamily: 'avenir-light',
+                fontSize: 16
               }}
               onChangeText={this.updateSearch}
               value={search}
               lightTheme={true}
               onEndEditing={this.onEnd}
-              icon = {{ color: 'white', style: styles.searchIcon }}
+              icon={{
+                type: 'material',
+                color: 'white', 
+                name: 'search'
+              }}
             />
         </View>
 
@@ -81,7 +89,7 @@ export default class SearchScreen extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'rgba(0,0,0,.5)',
+    backgroundColor: 'rgba(0,0,0,.1)',
     alignItems: 'center',
     justifyContent: 'center'
   },
@@ -102,6 +110,9 @@ const styles = StyleSheet.create({
     paddingTop: 5,
     backgroundColor: 'transparent',
     width: '90%'
+  },
+  searchIcon: {
+    color: 'white'
   },
   titleText: {
     fontSize: 20,

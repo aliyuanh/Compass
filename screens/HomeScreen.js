@@ -132,6 +132,7 @@ const styles = StyleSheet.create({
     borderRadius:5,
     justifyContent:'space-between',
     fontSize: 70,
+    fontFamily: 'avenir-light'
   },
   locationText:{
     margin: 5,
@@ -139,7 +140,8 @@ const styles = StyleSheet.create({
     fontSize: 20,
     maxWidth: 170,
     justifyContent:'space-between',
-    color: '#3dbfb6'
+    color: '#3dbfb6',
+    fontFamily: 'avenir-light'
   },
   locationImage:{
     margin:5,
@@ -149,7 +151,7 @@ const styles = StyleSheet.create({
   smallBox:{
     marginRight: 5,
     textAlign: 'right',
-    padding: 3
+    padding: 2
   },
   container: {
     flex: 1,

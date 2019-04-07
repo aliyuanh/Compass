@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, Button } from 'react-native';
+import { Image, StyleSheet, Text, View, Button } from 'react-native';
 {/*import * as firebase from 'react-native-firebase'; */}
 import MainTaNavigator from '../navigation/MainTabNavigator';
 import { StackNavigator } from 'react-navigation';
@@ -88,6 +88,18 @@ export default class login extends React.Component {
         return (
 
             <View style={styles.container}>
+				          <View style={styles.welcomeContainer}>
+				            <Image
+				              source={
+				                __DEV__
+				                  //set this to the app logo later
+				                    ? require('../assets/images/icon.png')
+				                    : require('../assets/images/icon.png')
+				              }
+				              style={styles.welcomeImage}
+				            />
+				          </View>
+
                 <Input
                   label='Email'
                   placeholder='joebruin@ucla.edu'
@@ -143,9 +155,17 @@ export default class login extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: '#fae3d9',
     alignItems: 'center',
     justifyContent: 'center'
 
   },
+    welcomeImage: {
+      width: 200,
+      height: 200,
+      resizeMode: 'contain',
+      marginTop: 3,
+      marginLeft: -10,
+    },
+
 });
