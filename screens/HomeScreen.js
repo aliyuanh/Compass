@@ -60,17 +60,7 @@ export default class HomeScreen extends React.Component {
     header: null,
   };
 
-  state = {
-    search: '',
-  };
-
-  updateSearch = search => {
-    this.setState({ search });
-  };
-
   render() {
-    const { search } = this.state;
-
     return (
       <View style={styles.container}>
           <View style={styles.welcomeContainer}>
@@ -134,28 +124,61 @@ export default class HomeScreen extends React.Component {
 }
 
 const styles = StyleSheet.create({
+  smallBox:{
+    minWidth: 60,
+    minHeight: 40,
+    maxHeight:40,
+    maxWidth:60,
+    margin: 20,
+  },
+  locationImage:{
+    margin: 10,
+    height: 60,
+    width: 60
+  },
+  locationText:{
+    margin:10,
+    fontSize: 20,
+    flex: 2,
+    flexWrap: 'wrap'
+  },
+  locationContainer:{
+    flexDirection : 'row',
+    borderRadius: 5,
+    borderWidth: 3,
+    borderColor: 'rgba(100,100,100,.5)',
+    marginBottom:20,
+    marginHorizontal: 5,
+    fontSize: 20,
+    //maxHeight: 100,
+    backgroundColor: 'rgba(200,200,200,.5)'
+  },
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: '#fae3d9',
   },
   developmentModeText: {
-    marginBottom: 20,
+    margin: 20,
+    paddingTop:35,
+    fontWeight:'bold',
     color: 'rgba(0,0,0,0.4)',
-    fontSize: 14,
+    fontSize: 50,
     lineHeight: 19,
     textAlign: 'center',
   },
   contentContainer: {
-    paddingTop: 30,
+    paddingTop: 20,
+    alignItems:'center'
   },
   welcomeContainer: {
     alignItems: 'center',
-    marginTop: 10,
-    marginBottom: 20,
+    marginTop: 40,
+    marginBottom: 5,
+    height: 50
   },
   welcomeImage: {
     width: 100,
-    height: 80,
+    height: 100,
     resizeMode: 'contain',
     marginTop: 3,
     marginLeft: -10,
@@ -176,7 +199,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 4,
   },
   getStartedText: {
-    fontSize: 17,
+    fontSize: 20,
     color: 'rgba(96,100,109, 1)',
     lineHeight: 24,
     textAlign: 'center',
@@ -200,10 +223,9 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: '#fbfbfb',
     paddingVertical: 20,
-    borderColor: 'black', borderWidth: 1
   },
   tabBarInfoText: {
-    fontSize: 17,
+    fontSize: 37,
     color: 'rgba(96,100,109, 1)',
     textAlign: 'center',
   },
@@ -218,15 +240,7 @@ const styles = StyleSheet.create({
     paddingVertical: 15,
   },
   helpLinkText: {
-    fontSize: 14, 
+    fontSize: 34, 
     color: '#2e78b7',
-  },
-  searchContainer: {
-    alignItems: 'center',
-    marginTop: 5,
-    marginBottom: 15,
-    paddingBottom: 5,
-    paddingTop: 5,
-    backgroundColor: 'white',
-  },
+  }
 });
