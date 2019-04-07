@@ -7,6 +7,7 @@ import HomeScreen from '../screens/HomeScreen';
 import LinksScreen from '../screens/LinksScreen';
 import SettingsScreen from '../screens/SettingsScreen';
 import SearchScreen from '../screens/SearchScreen';
+import ItineraryScreen1 from '../screens/ItineraryScreen1';
 
 const fade = (props) => {
     const {position, scene} = props
@@ -76,11 +77,11 @@ LinksStack.navigationOptions = {
 
 const SettingsStack = createStackNavigator({
   Settings: SettingsScreen,
-
+  Itinerary1: { screen: ItineraryScreen1},
 });
 
 SettingsStack.navigationOptions = {
-  tabBarLabel: 'My Itineraries',
+  tabBarLabel: 'Itineraries',
   tabBarIcon: ({ focused }) => (
     <TabBarIcon
       focused={focused}
