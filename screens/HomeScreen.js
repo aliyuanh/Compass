@@ -13,7 +13,7 @@ import {
 import { WebBrowser } from 'expo';
 import { MonoText } from '../components/StyledText';
 import { SearchBar } from 'react-native-elements';
-import { createStackNavigator } from 'react-navigation';
+import { createStackNavigator, createAppContainer } from 'react-navigation';
 import SearchScreen from './SearchScreen';
 
 function addEvents(loc, arr){
@@ -38,16 +38,16 @@ export default class HomeScreen extends React.Component {
   constructor(props){
     super(props);
     //navigation = this.props.navigation
-    this.location = 'Los Angeles'
+    this.location = 'Tokyo'
     this.toAddToItinerary = []
     this.eventAndPic = [
-      {event: 'Disneyland        ', imageLoc: require('../assets/images/disneyland.jpg'), location: 'Los Angeles'},
+      {event: 'Disneyland', imageLoc: require('../assets/images/disneyland.jpg'), location: 'Los Angeles'},
       {event: 'Universal Studios Hollywood', imageLoc: require('../assets/images/universal.jpeg'), location: 'Los Angeles'},
       {event: 'Griffith Observatory', imageLoc: require('../assets/images/griffith.jpg'), location: 'Los Angeles'},
       {event: 'Santa Monica Pier', imageLoc: require('../assets/images/santa.jpg'), location: 'Los Angeles'},
-      {event: 'The Getty         ', imageLoc: require('../assets/images/getty.jpeg'), location: 'Los Angeles'},
+      {event: 'The Getty', imageLoc: require('../assets/images/getty.jpeg'), location: 'Los Angeles'},
       {event: 'Hollywood Walk of Fame', imageLoc: require('../assets/images/hollywood.jpg'), location: 'Los Angeles'},
-      {event: 'Broadway           ', imageLoc: require('../assets/images/broadway.jpeg'), location: 'New York City'},
+      {event: 'Broadway', imageLoc: require('../assets/images/broadway.jpeg'), location: 'New York City'},
       {event: 'Empire State Building', imageLoc: require('../assets/images/empire.jpg'), location: 'New York City'},
       {event: 'Statue of Liberty', imageLoc: require('../assets/images/liberty.jpg'), location: 'New York City'},
       {event: 'Central Park', imageLoc: require('../assets/images/central.jpg'), location: 'New York City'},
@@ -57,7 +57,7 @@ export default class HomeScreen extends React.Component {
       {event: 'Tsukiji Fish Market', imageLoc: require('../assets/images/tsukiji.jpg'), location: 'Tokyo'},
       {event: 'Muji GINZA Flagship Store', imageLoc: require('../assets/images/muji.png'), location: 'Tokyo'},
       {event: 'Tokyu Hands Ginza', imageLoc: require('../assets/images/ginza.jpg'), location: 'Tokyo'},
-      {event: 'Urikiriya         ', imageLoc: require('../assets/images/uri.jpg'), location: 'Tokyo'},
+      {event: 'Urikiriya', imageLoc: require('../assets/images/uri.jpg'), location: 'Tokyo'},
       {event: 'Studio Ghibli Museum', imageLoc: require('../assets/images/ghibli.jpg'), location: 'Tokyo'},
 
     ]
@@ -70,21 +70,12 @@ export default class HomeScreen extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-          <View style={styles.welcomeContainer}>
-            <Image
-              source={
-                __DEV__
-                  //set this to the app logo later
-                    ? require('../assets/images/icon.png')
-                    : require('../assets/images/icon.png')
-              }
-              style={styles.welcomeImage}
-            />
-          </View>
+
 
           <Text>   </Text>
           <Text>   </Text>
           <Text>   </Text>
+
 
           <View style={{
               flex: 1,
@@ -139,14 +130,16 @@ const styles = StyleSheet.create({
     flexWrap : 'wrap',
     backgroundColor: '#f7ebe6',
     borderRadius:5,
-    justifyContent:'space-between'
+    justifyContent:'space-between',
+    fontSize: 70,
   },
   locationText:{
     margin: 5,
-    textAlign: 'left',
+    textAlign: 'center',
     fontSize: 20,
     maxWidth: 170,
-    justifyContent:'space-between'
+    justifyContent:'space-between',
+    color: '#3dbfb6'
   },
   locationImage:{
     margin:5,
@@ -161,11 +154,13 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fae3d9',
+    paddingTop: 10,
   },
   developmentModeText: {
+    paddingTop: 40,
     marginBottom:10,
-    color: 'rgba(0,0,0,1)',
-    fontSize: 24,
+    color: '#ffb6b9',
+    fontSize: 60,
     lineHeight: 24,
     textAlign: 'center',
     fontWeight: "bold",

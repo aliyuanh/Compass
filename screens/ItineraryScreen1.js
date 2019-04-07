@@ -1,14 +1,18 @@
 import React from 'react';
-import { ScrollView, Text, StyleSheet } from 'react-native';
+import { ScrollView, Text, StyleSheet, View } from 'react-native';
 import { ExpoConfigView, ExpoLinksView } from '@expo/samples';
 
 export default class SettingsScreen extends React.Component {
   static navigationOptions = {
     title: '',
+    headerStyle:{
+      headerTintColor: '#ffb6b9',
+  },
   };
 
   render() {
     return (
+      <View style={styles.fauxContainer}>
       <ScrollView contentContainerStyle={styles.wrapper}>
         <ScrollView contentContainerStyle={styles.wrapper}>
         <Text style={styles.locationText}>TOKYO</Text>
@@ -164,21 +168,26 @@ export default class SettingsScreen extends React.Component {
         <Text></Text>
         <Text></Text>
         <Text></Text>
-      </ScrollView>
+      </ScrollView></View>
     );
   }
 }
 
 const styles = StyleSheet.create({
+  fauxContainer:{
+    backgroundColor: '#fae3d9',
+    flex: 1,
+  },
   wrapper: {
     justifyContent: 'center',
-    alignItems: 'center',
-    margin: 30
+    //alignItems: 'center',
+    margin: 30,
+    backgroundColor: '#fae3d9',
   },
   container: {
     alignItems: 'center',
     flex: 1,
-    paddingTop: 15,
+    paddingTop: 5,
     paddingBottom: 15,
     backgroundColor: '#fae3d9',
     flexWrap: "wrap"

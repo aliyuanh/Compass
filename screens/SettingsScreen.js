@@ -7,13 +7,16 @@ import ItineraryScreen1 from '../screens/ItineraryScreen1';
 export default class SettingsScreen extends React.Component {
 
   static navigationOptions = {
-    title: 'My Itinerary',
+    header: null,
   };
 
   render() {
     return (
+      <View style={styles.fauxContainer}>
+      <ScrollView contentContainerStyle={styles.wrapper}>
       <View style={styles.container}>
 
+<Text style={styles.MainText}>My Itineraries</Text>
        <View style={styles.textContainer}>
        <TouchableOpacity
           style={styles.buttonstyle}
@@ -42,6 +45,7 @@ export default class SettingsScreen extends React.Component {
 
 
        </View>
+       </ScrollView></View>
     );
   }
 }
@@ -49,9 +53,28 @@ export default class SettingsScreen extends React.Component {
 
 
 const styles = StyleSheet.create({
+  fauxContainer:{
+    backgroundColor: '#fae3d9',
+    flex: 1,
+  },
+  wrapper: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    margin: 30,
+    backgroundColor: '#fae3d9',
+    color: '#fae3d9',
+    flex: 1,
+    paddingLeft: 75,
+    paddingRight: 75,
+    paddingBottom: 350,
+    paddingTop: 20,
+  },
   container: {
     flex: 1,
-    paddingTop: 25,
+    paddingTop: 50,
+    paddingBottom: 50,
+    paddingLeft: 75,
+    paddingRight: 75,
     backgroundColor: '#fae3d9',
   },
   buttonstyle: {
@@ -67,7 +90,7 @@ const styles = StyleSheet.create({
     justifyContent:'center',
     width: 325,
     flexDirection: 'row',
-    paddingTop: 5,
+    //paddingTop: 5,
     paddingBottom: 5,
     paddingRight: 5,
     paddingLeft: 5,
@@ -86,6 +109,11 @@ const styles = StyleSheet.create({
   MainContainer: {
     flex: 1,
     margin: 10
+  },
+  MainText:{
+    fontSize: 50,
+    fontWeight: 'bold',
+    color: '#ffb6b9',
   },
 
   TextStyle:{

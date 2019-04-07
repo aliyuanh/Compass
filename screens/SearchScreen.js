@@ -20,7 +20,7 @@ export default class SearchScreen extends React.Component {
 
   onEnd = () => {
     if(this.state.search == 'New York City' || this.state.search == 'Los Angeles' || this.state.search == 'Tokyo') {
-      this.props.navigation.navigate( 'Home', {loc: 'Los Angeles'} )
+      this.props.navigation.navigate( 'Home', {Sending: this.state.search} )
     }
     else {
       alert("error")

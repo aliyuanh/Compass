@@ -102,8 +102,8 @@ Itinerary1Stack.navigationOptions = {
 
 export default createBottomTabNavigator(
   {
-    HomeStack,
     LinksStack,
+    HomeStack,
     SettingsStack
 
   /*
