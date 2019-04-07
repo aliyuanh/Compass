@@ -127,7 +127,7 @@ export default class login extends React.Component {
                 <Text>{this.state.error}</Text>
                 {this.renderButtonOrLoading()}
 
-								<Button title="Log in with your facebook account" onPress={this._handlePressAsync} />
+								<Button title="Log in with your Facebook account" onPress={this._handlePressAsync} />
 				        {this.state.result ? (
 				          <Text>Login Successfully!</Text>
 						  				        // <Text>{JSON.stringify(this.state.result)}*</Text>

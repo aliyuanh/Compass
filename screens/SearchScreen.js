@@ -38,7 +38,7 @@ export default class SearchScreen extends React.Component {
 
         <View style={styles.container}>
 
-        <Text style={[styles.titleText,styles.setColorWhite]}> Where do you want to go </Text>
+        <Text style={[styles.titleText,styles.setColorWhite]}> Where do you want to go?</Text>
 
         <View style={styles.searchContainer}>
           <SearchBar
@@ -65,7 +65,7 @@ export default class SearchScreen extends React.Component {
               onEndEditing={this.onEnd}
               icon={{
                 type: 'material',
-                color: 'white', 
+                color: 'white',
                 name: 'search'
               }}
             />
