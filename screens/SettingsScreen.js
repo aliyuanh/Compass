@@ -10,7 +10,6 @@ export default class SettingsScreen extends React.Component {
     title: 'My Itinerary',
   };
 
-
   render() {
     return (
       <View style={styles.container}>
@@ -86,7 +85,6 @@ const styles = StyleSheet.create({
   MainContainer: {
     flex: 1,
     margin: 10
-
   },
 
   TextStyle:{

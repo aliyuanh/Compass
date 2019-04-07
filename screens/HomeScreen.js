@@ -11,8 +11,10 @@ import {
   Alert,
 } from 'react-native';
 import { WebBrowser } from 'expo';
-
 import { MonoText } from '../components/StyledText';
+import { SearchBar } from 'react-native-elements';
+import { createStackNavigator } from 'react-navigation';
+import SearchScreen from './SearchScreen';
 
 function addEvents(loc, arr){
   return arr.filter(event=> event.location == 'Los Angeles')
@@ -57,19 +59,40 @@ export default class HomeScreen extends React.Component {
     header: null,
   };
 
+  state = {
+    search: '',
+  };
+
+  updateSearch = search => {
+    this.setState({ search });
+  };
+
   render() {
+    const { search } = this.state;
+
     return (
       <View style={styles.container}>
-            <View style={styles.welcomeContainer}>
-              <Image
+        <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
+
+          <View style={styles.welcomeContainer}>
+            <Image
                 source={
                   __DEV__
                   //set this to the app logo later
                     ? require('../assets/images/icon.png')
                     : require('../assets/images/icon.png')
                 }
-                style={styles.welcomeImage}
-              />
+              style={styles.welcomeImage}
+            />
+          </View>
+
+          <View style={styles.getStartedContainer}>
+            {this._maybeRenderDevelopmentModeWarning()}
+
+            <Text style={styles.getStartedText}>Get started by opening</Text>
+
+            <View style={[styles.codeHighlightContainer, styles.homeScreenFilename]}>
+              <MonoText style={styles.codeHighlightText}>screens/HomeScreen.js</MonoText>
             </View>
           <Text>   </Text>
           <Text>   </Text>
@@ -110,10 +133,7 @@ export default class HomeScreen extends React.Component {
                 }
               </ScrollView>
             </View>
-
-
         </View>
-
       </View>
     );
   }
@@ -214,6 +234,7 @@ const styles = StyleSheet.create({
   getStartedContainer: {
     //alignItems: 'center',
     marginHorizontal: 50,
+    borderColor: 'orange', borderWidth: 1
   },
   homeScreenFilename: {
     marginVertical: 7,
@@ -225,6 +246,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'rgba(0,0,0,0.05)',
     borderRadius: 3,
     paddingHorizontal: 4,
+    borderColor: 'yellow', borderWidth: 1
   },
   getStartedText: {
     fontSize: 20,
@@ -251,6 +273,7 @@ const styles = StyleSheet.create({
   //  alignItems: 'center',
     backgroundColor: '#fbfbfb',
     paddingVertical: 20,
+    borderColor: 'black', borderWidth: 1
   },
   tabBarInfoText: {
     fontSize: 37,
@@ -262,7 +285,7 @@ const styles = StyleSheet.create({
   },
   helpContainer: {
     marginTop: 15,
-    //alignItems: 'center',
+    alignItems: 'center',
   },
   helpLink: {
     paddingVertical: 15,
@@ -270,5 +293,13 @@ const styles = StyleSheet.create({
   helpLinkText: {
     fontSize: 34,
     color: '#2e78b7',
+  },
+  searchContainer: {
+    alignItems: 'center',
+    marginTop: 5,
+    marginBottom: 15,
+    paddingBottom: 5,
+    paddingTop: 5,
+    backgroundColor: 'white',
   },
 });
