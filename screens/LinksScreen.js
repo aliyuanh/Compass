@@ -24,18 +24,18 @@ firebase.initializeApp(firebaseConfig);
 export default class login extends React.Component {
     constructor(props) {
         super(props);
-        this.state = { 
-          email: '', 
-          password: '', 
-          error: '', 
+        this.state = {
+          email: '',
+          password: '',
+          error: '',
           loading: false };
     }
     onLoginPress() {
-        
+
         this.setState({ error: '', loading: true });
         alert({email}, {password});
         const { email, password } = this.state;
-        
+
         {/*firebacks.
         firebase.auth().signInWithEmailAndPassword(email, password)
             .then(() => {
@@ -62,7 +62,7 @@ export default class login extends React.Component {
             .catch(() => {
                 this.setState({ error: 'Authentication failed', loading: false });
 
-            })*/} 
+            })*/}
     }
 
     renderButtonOrLoading() {
@@ -83,19 +83,19 @@ export default class login extends React.Component {
     render() {
 
         return (
-          
+
             <View style={styles.container}>
                 <Input
                   label='Email'
                   placeholder='joebruin@ucla.edu'
-                  inputContainerStyle={{ 
+                  inputContainerStyle={{
                   }}
                   containerStyle={{
                     marginBottom: 20,
                     width: '80%'
                   }}
                   onChangeText={email => this.setState({ email })}
-                   
+
                 />
 
                 <Input
@@ -108,16 +108,32 @@ export default class login extends React.Component {
                   }}
                   onChangeText={password => this.setState({ password })}
                 />
-              
+
                 <Text>{this.state.error}</Text>
                 {this.renderButtonOrLoading()}
 
+								<Button title="Log in with your facebook account" onPress={this._handlePressAsync} />
+				        {this.state.result ? (
+				          <Text>Login Successfully!</Text>
+						  				        // <Text>{JSON.stringify(this.state.result)}*</Text>
+				        ) : null}
+
             </View>
-          
+
 
         )
 
     }
+  _handlePressAsync = async () => {
+    let redirectUrl = AuthSession.getRedirectUrl();
+    let result = await AuthSession.startAsync({
+      authUrl:
+        `https://www.facebook.com/v2.8/dialog/oauth?response_type=token` +
+        `&client_id=${FB_APP_ID}` +
+        `&redirect_uri=${encodeURIComponent(redirectUrl)}`,
+    });
+    this.setState({ result });
+  };
 
 }
 
