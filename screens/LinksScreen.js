@@ -4,7 +4,7 @@ import { StyleSheet, Text, View, Button } from 'react-native';
 import MainTaNavigator from '../navigation/MainTabNavigator';
 import { StackNavigator } from 'react-navigation';
 import { AuthSession } from 'expo';
-import * as firebase from 'firebase';
+//import * as firebase from 'firebase';
 import MainTabNavigator from '../navigation/MainTabNavigator';
 const FB_APP_ID = '414920962651232';
 import { Input } from 'react-native-elements';

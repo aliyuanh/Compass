@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, View, Button, ImageBackground } from 'react-native';
 import { Constants } from 'expo';
-import { SearchBar, Icon } from 'react-native-elements'; 
+import { SearchBar, Icon } from 'react-native-elements';
 
 export default class SearchScreen extends React.Component {
   static navigationOptions = {
@@ -19,21 +19,21 @@ export default class SearchScreen extends React.Component {
   };
 
   onEnd = () => {
-    if(this.state.search == 'New York' || this.state.search == 'Los Angeles') {
-      this.props.navigation.navigate( 'Home' )
+    if(this.state.search == 'New York City' || this.state.search == 'Los Angeles' || this.state.search == 'Tokyo') {
+      this.props.navigation.navigate( 'Home', {loc: 'Los Angeles'} )
     }
     else {
       alert("error")
     }
   };
- 
+
   render() {
     const { search } = this.state;
 
-    return ( 
+    return (
 
-      <ImageBackground 
-        source={require('../assets/images/Flower.jpg')} 
+      <ImageBackground
+        source={require('../assets/images/Flower.jpg')}
         style={{width: '100%', height: '100%'}}>
 
         <View style={styles.container}>
@@ -43,7 +43,7 @@ export default class SearchScreen extends React.Component {
         <View style={styles.searchContainer}>
           <SearchBar
               containerStyle={{
-                backgroundColor: 'rgba(255,255,255,.2)', 
+                backgroundColor: 'rgba(255,255,255,.2)',
                 borderColor: '#ade6e6',
                 borderTopColor: '#ade6e6',
                 borderBottomColor: '#ade6e6',
@@ -64,8 +64,8 @@ export default class SearchScreen extends React.Component {
         </View>
 
         {/*
-        <Button 
-          title="Results" 
+        <Button
+          title="Results"
           onPress={
             () => this.props.navigation.navigate( 'Home' )
           }
@@ -73,7 +73,7 @@ export default class SearchScreen extends React.Component {
 
       </View>
       </ImageBackground>
-      
+
     );
   };
 }
