@@ -4,9 +4,11 @@ import {
   Platform,
   ScrollView,
   StyleSheet,
+  Button,
   Text,
   TouchableOpacity,
   View,
+  Alert,
 } from 'react-native';
 import { WebBrowser } from 'expo';
 
@@ -15,11 +17,27 @@ import { MonoText } from '../components/StyledText';
 function addEvents(loc, arr){
   return arr.filter(event=> event.location == 'Los Angeles')
 }
+function pressBoi(item, arr, nav){
+  arr.push(item)
+//  const MyNavScreen = ({ navigation })
+  Alert.alert(
+  'YUHItinerary Modified',
+  'YEAdded to itinerary for '+item.location,
+  [
+    {text: 'Woo!', onPress: () => console.log("button pressed in search")}
+  ],
+  { cancelable: false }
+)
+//move this to another button which sends to my itineraries
+{nav.navigate('Settings', {itinerary: arr})}
+}
 
 export default class HomeScreen extends React.Component {
   constructor(){
     super();
-    this.location = 'Los Angeles'
+    //navigation = this.props.navigation
+    this.location = 'New York City'
+    this.toAddToItinerary = []
     this.eventAndPic = [
       {event: 'Disneyland', imageLoc: require('../assets/images/disneyland.jpg'), location: 'Los Angeles'},
       {event: 'Universal Studios Hollywood', imageLoc: require('../assets/images/universal.jpeg'), location: 'Los Angeles'},
@@ -47,18 +65,22 @@ export default class HomeScreen extends React.Component {
                 source={
                   __DEV__
                   //set this to the app logo later
-                    ? require('../assets/images/robot-dev.png')
-                    : require('../assets/images/robot-prod.png')
+                    ? require('../assets/images/icon.png')
+                    : require('../assets/images/icon.png')
                 }
                 style={styles.welcomeImage}
               />
             </View>
+          <Text>   </Text>
+          <Text>   </Text>
+          <Text>   </Text>
 
         <View style={{
               flex: 1,
               flexDirection: 'column',
               justifyContent: 'space-evenly'
             }}>
+            <Text style = {styles.developmentModeText}>{this.location}</Text>
             <View style= {{flex:5}}>
               <ScrollView style = {{margin:20}}>
               <View/>
@@ -68,10 +90,21 @@ export default class HomeScreen extends React.Component {
                 {
                   this.eventAndPic.map((item, key)=>
                 (
-                  item.location === 'Los Angeles'?
+                  item.location === this.location?
                   <View key = {key} style={styles.locationContainer}>
                     <Image source = {item.imageLoc} style = {styles.locationImage} resizeMode = "contain"/>
-                      <Text style = {styles.locationText}> {item.event} </Text>
+                    <Text style = {styles.locationText}> {item.event} </Text>
+                    <View style = {styles.smallBox}>
+                      <Button
+                        onPress = {()=>pressBoi(item, this.toAddToItinerary, this.props.navigation)
+                        }
+                        title = 'Add'
+                        color="#841584"
+                        style = {styles.smallBox}
+                      //  <Image source = {item.imageLoc}/>
+                      />
+                    </View>
+
                   </View>:null
                 ))
                 }
@@ -119,6 +152,13 @@ export default class HomeScreen extends React.Component {
 }
 
 const styles = StyleSheet.create({
+  smallBox:{
+    minWidth: 60,
+    minHeight: 40,
+    maxHeight:40,
+    maxWidth:60,
+    margin: 20,
+  },
   locationImage:{
     margin: 10,
     height: 60,
@@ -135,40 +175,44 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     borderWidth: 3,
     borderColor: 'rgba(100,100,100,.5)',
-    marginVertical:20,
+    marginBottom:20,
     marginHorizontal: 5,
-    fontSize: 35,
+    fontSize: 20,
     //maxHeight: 100,
     backgroundColor: 'rgba(200,200,200,.5)'
   },
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: '#fae3d9',
   },
   developmentModeText: {
-    marginBottom: 20,
+    margin: 20,
+    paddingTop:35,
+    fontWeight:'bold',
     color: 'rgba(0,0,0,0.4)',
-    fontSize: 30,
+    fontSize: 50,
     lineHeight: 19,
     textAlign: 'center',
   },
   contentContainer: {
-    paddingTop: 30,
+    paddingTop: 20,
+    alignItems:'center'
   },
   welcomeContainer: {
     alignItems: 'center',
-    marginTop: 10,
-    marginBottom: 20,
+    marginTop: 40,
+    marginBottom: 5,
+    height: 50
   },
   welcomeImage: {
     width: 100,
-    height: 80,
+    height: 100,
     resizeMode: 'contain',
     marginTop: 3,
     marginLeft: -10,
   },
   getStartedContainer: {
-    alignItems: 'center',
+    //alignItems: 'center',
     marginHorizontal: 50,
   },
   homeScreenFilename: {
@@ -183,7 +227,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 4,
   },
   getStartedText: {
-    fontSize: 30,
+    fontSize: 20,
     color: 'rgba(96,100,109, 1)',
     lineHeight: 24,
     textAlign: 'center',
@@ -204,7 +248,7 @@ const styles = StyleSheet.create({
         elevation: 20,
       },
     }),
-    alignItems: 'center',
+  //  alignItems: 'center',
     backgroundColor: '#fbfbfb',
     paddingVertical: 20,
   },
@@ -218,7 +262,7 @@ const styles = StyleSheet.create({
   },
   helpContainer: {
     marginTop: 15,
-    alignItems: 'center',
+    //alignItems: 'center',
   },
   helpLink: {
     paddingVertical: 15,
